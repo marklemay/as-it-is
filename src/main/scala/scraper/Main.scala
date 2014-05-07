@@ -114,62 +114,6 @@ val total:Float = map.map{case (s,n) =>n}.fold(0)(_+_)
 
           println(map.map{case (s,n) => s.mkString(" [","] [", "]")+":\t"+n+"\t("+ (n.asInstanceOf[Float]/total)+")"}.mkString("\n"))
           println
-          //          
-          //
-          //          val part = ln.replaceFirst("https://github.com/", "")
-          //          val dir = Path("target/scraper/" + part)
-          //          print(dir.createDirectory(true, false))
-          //          total += 1;
-          //          //get indevidual pom, quicker then grabing the entire project or repo
-          //
-          //          //TODO: find primary branch, it is only sometimes "master", will through off the numbers otherwise
-          //          try {
-          //            val response = Request.Get("https://raw.githubusercontent.com/" + part + "/master/pom.xml")
-          //              .execute().returnContent();
-          //
-          //            val f = File("target/scraper/" + part + "/pom.xml")
-          //
-          //            //f.writeAll(response.asString())//writing as bytes would be "better"
-          //
-          //            print(" [pom]")
-          //            maven += 1
-          //          } catch {
-          //            case _ => //handle the expected error (no file) throw other errors
-          //          }
-          //
-          //          //Thread.sleep(1000L) // rate limited
-          //
-          //          try {
-          //            val response = Request.Get("https://raw.githubusercontent.com/" + part + "/master/build.gradle")
-          //              .execute().returnContent();
-          //
-          //            val f = File("target/scraper/" + part + "/build.gradle")
-          //
-          //            //f.writeAll(response.asString())//writing as bytes would be "better"
-          //
-          //            print(" [gradle]")
-          //            gradle += 1
-          //          } catch {
-          //            case _ => //handle the expected error (no file) throw other errors
-          //          }
-          //
-          //          //Thread.sleep(1000L) // rate limited
-          //
-          //          try {
-          //            val response = Request.Get("https://raw.githubusercontent.com/" + part + "/master/build.xml")
-          //              .execute().returnContent();
-          //
-          //            val f = File("target/scraper/" + part + "/build.xml")
-          //
-          //            //f.writeAll(response.asString())//writing as bytes would be "better"
-          //
-          //            print(" [ant]")
-          //            ;
-          //            ant += 1;
-          //          } catch {
-          //            case _ => //handle the expected error (no file) throw other errors
-          //          }
-          //          println
 
           //Thread.sleep(1000L) // rate limited
 
