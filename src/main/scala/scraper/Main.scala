@@ -101,7 +101,7 @@ object Main {
           val url = "https://api.github.com/repos/" + part + "/contents/"
 
 //                    Thread.sleep(1000L) // rate limited
-          val response = Request.Get(url + "?client_id=af99f46d35e7244727f7&client_secret=bb6ccdce71374141dcc7521a0f5c200395b6ab9c")
+          val response = Request.Get(url + "?"+client)
             .execute().returnContent();
 
           val buildSystems = getBuilds(url, response.asString(), 2)
