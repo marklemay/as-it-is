@@ -7,6 +7,7 @@ import scala.io.Source
 import scala.reflect.io.Path
 import scala.reflect.io.File
 import java.net.URLEncoder
+import org.apache.commons.lang3.StringUtils.substringAfterLast
 
 object Main {
 
@@ -19,27 +20,7 @@ object Main {
 
    import Config._;
     
-    def getBuilds(url:String,json:String,depth:Int):Set[BuildSystem] ={
-    var buildSystems = getBuilds(json);
-    
-    if(depth>0){
-    val urls = jp[String](json, "$.[?(@.type == 'dir')].name");
-    
-    buildSystems = urls.map{d => 
-      
-//                Thread.sleep(1000L) // rate limited
-//                println(url + d)
-      val encoded = URLEncoder.encode(d)//TODO:utf8
-                
-       val response = Request.Get(url + encoded +"?"+client)
-                  .execute().returnContent();
-      
-      getBuilds(url + encoded + "/",response.asString(), depth-1)
-      }.fold(buildSystems)((a,b) => a.union(b))
-    }
-    
-    return buildSystems
-  }
+
   
   def getBuilds(json:String):Set[BuildSystem] ={
     var buildSystems = Set[BuildSystem]();
@@ -47,25 +28,52 @@ object Main {
               //"path": "pom.xml",
           //"type": "file", //TODO: confirm that each of these is a file
 
-          val pomMeta = jp[java.lang.Object](json, "$.[?(@.name == 'pom.xml')]");
-          if (pomMeta.size > 0) {
-            buildSystems = buildSystems ++ Set(maven)
-          }
+    
+          val allpaths = jp[java.lang.String](json, "$.tree[*].path");
 
-          val gradleMeta = jp[java.lang.Object](json, "$.[?(@.name == 'build.gradle')]");
-          if (gradleMeta.size > 0) {
-            buildSystems = buildSystems ++ Set(gradle)
-          }
-
-          val antMeta = jp[java.lang.Object](json, "$.[?(@.name == 'build.xml')]");
-          if (antMeta.size > 0) {
-            buildSystems = buildSystems ++ Set(ant)
-          }
           
-                    val eclipseMeta = jp[java.lang.Object](json, "$.[?(@.name == '.project')]");
-          if (eclipseMeta.size > 0) {
-            buildSystems = buildSystems ++ Set(eclipse)
-          }
+          val allnames =allpaths.map{s=>(substringAfterLast("/"+s,"/"),s)}.toSet
+
+    allnames.filter { p => p._1 == "pom.xml" }.foreach { p =>
+      buildSystems = buildSystems ++ Set(maven)
+      println(p._2)
+    }
+
+    allnames.filter { p => p._1 == "build.gradle" }.foreach { p =>
+      buildSystems = buildSystems ++ Set(gradle)
+      println(p._2)
+    }
+
+    allnames.filter { p => p._1 == "pom.xml" }.foreach { p =>
+      buildSystems = buildSystems ++ Set(maven)
+      println(p._2)
+    }
+
+    allnames.filter { p => p._1 == "build.xml" }.foreach { p =>
+      buildSystems = buildSystems ++ Set(ant)
+      println(p._2)
+    }
+
+    allnames.filter { p => p._1 == ".project" }.foreach { p =>
+      buildSystems = buildSystems ++ Set(ant)
+      println(p._2)
+    }
+          
+//          if (allnames.filter((n,p)=>).contains("pom.xml")) {
+//            buildSystems = buildSystems ++ Set(maven)
+//          }
+//
+//          if (allnames.contains("build.gradle")) {
+//            buildSystems = buildSystems ++ Set(gradle)
+//          }
+//
+//          if (allnames.contains("build.xml")) {
+//            buildSystems = buildSystems ++ Set(ant)
+//          }
+//          
+//          if (allnames.contains(".project")) {
+//            buildSystems = buildSystems ++ Set(eclipse)
+//          }
     
     return buildSystems
   }
@@ -74,37 +82,21 @@ object Main {
   def main(args: Array[String]) {
     println("hi?????")
 
-    //              val response = Request.Get("https://api.github.com/repos/facebook/nifty/contents/?client_id=af99f46d35e7244727f7&client_secret=bb6ccdce71374141dcc7521a0f5c200395b6ab9c")
-    //              .execute().returnResponse();
-    //              
-    //            println(response.getAllHeaders().filter(_.getName().contains("X-RateLimit")).toList.mkString("\n"))
-
-//                              val response = Request.Get("https://api.github.com/repos/facebook/nifty/contents/?"+client)
-//                  .execute().returnContent();
-//                  
-//                println(response)
-//    
-//          val urls = jp[String](response.asString(), "$.[?(@.type == 'dir')].path");
-//                
-//                println(urls)
-
-    //    getall("sala", 1)
-
     var map  = Map[Set[BuildSystem],Int]().withDefault(x=>0)
     
-    Source.fromFile(raw"C:\Users\christ\workspacekepler211\scraper\src\test\resources\java").getLines().foreach {
+    Source.fromFile(raw"C:\Users\christ\git\as-it-is\src\test\resources\java").getLines().foreach {
       ln =>
         {
 
           val part = ln.replaceFirst("https://github.com/", "")
           print(part)
-          val url = "https://api.github.com/repos/" + part + "/contents/"
+          val url = "https://api.github.com/repos/" + part + "/git/trees/master?recursive=1&"+client //FIXME: use defualt branch, might not be master
 
-//                    Thread.sleep(1000L) // rate limited
+          try{//FIXME: remove this block
           val response = Request.Get(url + "?"+client)
             .execute().returnContent();
 
-          val buildSystems = getBuilds(url, response.asString(), 2)
+          val buildSystems = getBuilds( response.asString())
 
 print(buildSystems.mkString(" [","] [", "]"))
           
@@ -115,8 +107,10 @@ val total:Float = map.map{case (s,n) =>n}.fold(0)(_+_)
           println(map.map{case (s,n) => s.mkString(" [","] [", "]")+":\t"+n+"\t("+ (n.asInstanceOf[Float]/total)+")"}.mkString("\n"))
           println
 
-          //Thread.sleep(1000L) // rate limited
-
+          //Thread.sleep(2000L) // rate limited
+          }catch {
+  case t => t.printStackTrace()// todo: handle error
+}
           /*
           noticed
           
