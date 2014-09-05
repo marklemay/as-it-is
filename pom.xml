@@ -80,7 +80,13 @@
   <artifactId>commons-lang3</artifactId>
   <version>3.3.2</version>
 </dependency>
-            
+       
+            <!-- TODO: we can worry about proper serialization later -->
+<!--     <dependency>
+<groupId>org.scala-lang</groupId>  
+<artifactId>scala-pickling_2.11</artifactId>
+<version>0.8.0</version>
+</dependency> -->
 
     <!-- test dependencies -->
     <dependency>
@@ -95,8 +101,6 @@
 
   </dependencies>
 
-  <!-- TODO: set up a build for an exicutable fat jar + commandline integration 
-    test -->
 
   <build>
     <plugins>

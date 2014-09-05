@@ -1,0 +1,128 @@
+          noticed
+          
+
+          Rakefile:
+           - sparklemotion\nokogiri
+          Makefile
+           - jeresig\processing-js
+          .project
+           - cyrilmottier\GreenDroid
+           - /OpenRefine/OpenRefine
+           - koush\AndroidAsync
+           - jgilfelt/android-viewbadger
+           thest1/LazyList
+          project.clj
+           - videlalvaro\gifsockets
+          build.xml (ant)
+           - nicolasgramlich\AndEngine
+           - /OpenRefine/OpenRefine
+           - apache/cassandra
+           - yui\yuicompressor
+           - voldemort/voldemort
+           - ...
+          projects within diretories:
+           - excilys\androidannotations
+           - aporter\coursera-android
+           - koush\ion
+           - pakerfeldt\android-viewflow
+           - johannilsson\android-actionbar
+           - commonsguy\cw-omnibus (2 levels)
+           - openaphid\android-flip
+           - bigbluebutton\bigbluebutton
+           - commonsguy\cw-advandroid (2 deep)
+           ....
+          none?
+           - johannilsson/android-pulltorefresh
+           - android\platform_frameworks_base
+           - xamarin\XobotOS
+           - phonegap\phonegap-facebook-plugin
+           - processing\processing
+           - douglascrockford\JSON-java
+           - ether/pad
+           - BonzaiThePenguin/WikiSort
+           commonsguy/cw-android
+           novoda/android
+          not a proj:
+           - purplecabbage\phonegap-plugins
+           
+           check next: novoda/android
+          
+          * 
+          * 
+          * 
+          * 
+          * 
+          * latest
+peter-lawrey/Java-Chronicle [maven]
+ []:	12	(0.08108108)
+ [maven] [gradle] [eclipse]:	4	(0.027027028)
+ [maven] [gradle] [ant]:	2	(0.013513514)
+ [gradle] [ant]:	2	(0.013513514)
+ [maven] [ant]:	6	(0.04054054)
+ [maven]:	45	(0.30405405)
+ [ant] [eclipse]:	9	(0.06081081)
+ [maven] [eclipse]:	6	(0.04054054)
+ [maven] [gradle] [ant] [eclipse]:	4	(0.027027028)
+ [ant]:	4	(0.027027028)
+ [gradle] [ant] [eclipse]:	5	(0.033783782)
+ [gradle]:	26	(0.17567568)
+ [eclipse]:	7	(0.0472973)
+ [ant] [maven] [eclipse]:	6	(0.04054054)
+ [maven] [gradle]:	7	(0.0472973)
+ [gradle] [eclipse]:	3	(0.02027027)
+
+TooTallNate/Java-WebSocketException in thread "main" org.apache.http.client.HttpResponseException: Not Found
+	at org.apache.http.client.fluent.ContentResponseHandler.handleResponse(ContentResponseHandler.java:47)
+	at org.apache.http.client.fluent.ContentResponseHandler.handleResponse(ContentResponseHandler.java:40)
+	at org.apache.http.client.fluent.Response.handleResponse(Response.java:90)
+	at org.apache.http.client.fluent.Response.returnContent(Response.java:97)
+	at scraper.Main$$anonfun$getBuilds$1.apply(Main.scala:36)
+	at scraper.Main$$anonfun$getBuilds$1.apply(Main.scala:29)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:245)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:245)
+	at scala.collection.immutable.List.foreach(List.scala:302)
+	at scala.collection.TraversableLike$class.map(TraversableLike.scala:245)
+	at scala.collection.AbstractTraversable.map(Traversable.scala:104)
+	at scraper.Main$.getBuilds(Main.scala:29)
+	at scraper.Main$$anonfun$main$1.apply(Main.scala:108)
+	at scraper.Main$$anonfun$main$1.apply(Main.scala:97)
+	at scala.collection.Iterator$class.foreach(Iterator.scala:743)
+	at scala.collection.AbstractIterator.foreach(Iterator.scala:1174)
+	at scraper.Main$.main(Main.scala:96)
+	at scraper.Main.main(Main.scala)
+          * 
+          * 
+          * 
+          * TODO: URL encode
+          * 
+          * latest from hardcoded master recursive calls:
+          jsampson/prevayler [maven]
+ []:	98	(0.100409836)
+ [maven] [gradle] [eclipse]:	8	(0.008196721)
+ [maven] [gradle] [ant]:	23	(0.023565574)
+ [gradle] [ant]:	15	(0.015368853)
+ [maven] [ant]:	51	(0.0522541)
+ [maven]:	286	(0.2930328)
+ [ant] [eclipse]:	58	(0.05942623)
+ [maven] [eclipse]:	46	(0.047131147)
+ [maven] [gradle] [ant] [eclipse]:	12	(0.012295082)
+ [ant]:	51	(0.0522541)
+ [gradle] [ant] [eclipse]:	19	(0.019467212)
+ [gradle]:	142	(0.14549181)
+ [eclipse]:	72	(0.07377049)
+ [maven] [ant] [eclipse]:	38	(0.038934425)
+ [maven] [gradle]:	40	(0.040983606)
+ [gradle] [eclipse]:	17	(0.017418033)
+
+          */
+          //also check:
+          //         X build.gradle
+          //          gradle.properties
+          //          settings.gradle
+          //          maven_push.gradle
+          //          *.bat
+          //    https://github.com/sparklemotion/nokogiri whatever that is      
+
+          //TODO: compare project to SourceForge, google code, Gitorious?, ...
+
+          
