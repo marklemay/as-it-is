@@ -94,9 +94,9 @@ val total:Float = map.map{case (s,n) =>n}.fold(0)(_+_)
   def main(args: Array[String]) {
     println("hi?????")
 
-    getbuild()
+    //getbuild()
 
-
+     getall("",0)
   }
 
   //FIXME: there is definitely a claner scala way to do this

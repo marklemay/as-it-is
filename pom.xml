@@ -7,7 +7,7 @@
 
   <properties>
     <scalaVersion>2.11</scalaVersion>
-    <scalaFullVersion>2.11.0-M8</scalaFullVersion>
+    <scalaFullVersion>2.11.2</scalaFullVersion>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -70,9 +70,9 @@
       <version>0.9.1</version> </dependency> -->
 
     <dependency>
-      <groupId>jpathwrapper</groupId>
-      <artifactId>jpathwrapper</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <groupId>com.jayway.jsonpath</groupId>
+      <artifactId>json-path</artifactId>
+      <version>0.9.1</version>
     </dependency>
     
     <dependency>
